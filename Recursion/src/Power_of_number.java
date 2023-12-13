@@ -4,10 +4,14 @@ public class Power_of_number {
 
     public static int power (int x ,int n)
     {
-        if(n==0) return 1;
-        int P = power(x,n-1);
-        int ans = x * P;
+        if(n==0){
+            return 1;
+        }
+        int p = power(x,n-1);
+        int ans = p * x;
+
         return ans;
+
     }
     public static void main (String args [])
     {
