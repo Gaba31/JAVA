@@ -1,6 +1,25 @@
 import java.util.Scanner;
 
 public class All_Indices_Array {
+
+    public static int [] all_indice(int []arr , int d , int i , int fsf){
+        if(arr.length == i){
+            return new int[fsf];
+        }
+
+        if(arr[i] == d){
+            int ans [] = all_indice(arr,d,i+1,fsf+1);
+            ans[fsf] = i;
+            return ans;
+        }
+        else{
+            int ans [] = all_indice(arr,d,i+1,fsf);
+            return ans;
+        }
+
+
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -8,39 +27,19 @@ public class All_Indices_Array {
         int[] arr = new int[n];
 
 
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
 
+        int d = sc.nextInt();
 
-        int element = sc.nextInt();
-
-        int[] ans = allIndices(arr, element, 0, 0);
+      int [] ans = all_indice(arr,d,0,0);
 
         for (int i = 0; i < ans.length; i++) {
             System.out.println(ans[i]);
         }
 
+
     }
- // total will cal total no of element
-    public static int[] allIndices(int[] arr, int element, int idx, int total) {
-       if(idx == arr.length){
-           return new int [total];
-       }
-
-        int[] iarr;
-
-        if(arr[idx] == element)
-       {
-           iarr = allIndices(arr,element,idx+1,total+1);
-           iarr[total] = idx;
-       }
-       else
-       {
-           iarr = allIndices(arr,element,idx+1,total);
-
-       }
-       return iarr;
-   }
-
 }
+
